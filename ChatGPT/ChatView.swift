@@ -57,7 +57,7 @@ struct ChatView: View {
             return
         }
         let headers : HTTPHeaders = [
-            "Authorization" : "Bearer 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",
+            "Authorization" : "Bearer \(ChatView.OPENAI_SCRECT_KEY)",
             "Content-Type": "application/json"
         ]
         let params : [String : Any] = [
