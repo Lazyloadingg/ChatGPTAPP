@@ -1,16 +1,27 @@
 PODS:
   - Alamofire (5.6.2)
+  - WCDB.swift (2.0.0):
+    - WCDB.swift/no-arc (= 2.0.0)
+    - WCDBOptimizedSQLCipher (~> 1.4.0)
+  - WCDB.swift/no-arc (2.0.0):
+    - WCDBOptimizedSQLCipher (~> 1.4.0)
+  - WCDBOptimizedSQLCipher (1.4.0)
 
 DEPENDENCIES:
   - Alamofire
+  - WCDB.swift
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - WCDB.swift
+    - WCDBOptimizedSQLCipher
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  WCDB.swift: 1532be19a7e8baa62aad26fbc1b568173462c646
+  WCDBOptimizedSQLCipher: 55124a19f70180eb38163c959dd56695b8af8b60
 
-PODFILE CHECKSUM: c690a102e7c554eb52b5f1571a34bcb20d00945a
+PODFILE CHECKSUM: ebb95583548dd8ebb275afabce3ce42196f7bbc3
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.12.0
