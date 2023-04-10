@@ -10,6 +10,10 @@ import SwiftUI
 struct ChatSettingView: View {
     @Binding var isShow : Bool
     @State var key : String = ""
+    var current: String =  {
+        let model = APIKeyModel.getCurrentKey()
+        return model!.key
+    }()
     var body: some View {
         VStack{
             VStack(alignment: .leading){
@@ -20,6 +24,10 @@ struct ChatSettingView: View {
                     .overlay {
                         RoundedRectangle(cornerRadius: 10).stroke(Color.black.opacity(0.5))
                     }
+                HStack(alignment: .top){
+                    Text("当前Key:").font(.system(size: 14))
+                    Text(current).font(.system(size: 12)).foregroundColor(.gray.opacity(0.8))
+                }
             }.padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 .frame(width: 350,height: 330)
             HStack(alignment: .center){

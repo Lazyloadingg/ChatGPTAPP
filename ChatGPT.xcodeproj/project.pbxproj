@@ -10,6 +10,7 @@
 		0B8FF05EBFDE4DAE044C1409 /* Pods_ChatGPT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6B738F232456EA7980F720 /* Pods_ChatGPT.framework */; };
 		6628F79F29E1A577009C03E8 /* APIKeyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628F79E29E1A577009C03E8 /* APIKeyModel.swift */; };
 		6628F7A229E1AA14009C03E8 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628F7A129E1AA14009C03E8 /* DBManager.swift */; };
+		664C2FA429E3DF2A008FA9C1 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C2FA329E3DF2A008FA9C1 /* ChatList.swift */; };
 		66D11AF929E3013D00FDB9A2 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D11AF829E3013D00FDB9A2 /* ChatCell.swift */; };
 		66D11AFB29E302A500FDB9A2 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D11AFA29E302A500FDB9A2 /* ChatInputView.swift */; };
 		96D0E87E29DB184500AAB655 /* ChatGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D0E87D29DB184500AAB655 /* ChatGPTApp.swift */; };
@@ -26,6 +27,7 @@
 		4E6B738F232456EA7980F720 /* Pods_ChatGPT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatGPT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6628F79E29E1A577009C03E8 /* APIKeyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyModel.swift; sourceTree = "<group>"; };
 		6628F7A129E1AA14009C03E8 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		664C2FA329E3DF2A008FA9C1 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		66D11AF829E3013D00FDB9A2 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		66D11AFA29E302A500FDB9A2 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
 		96D0E87A29DB184500AAB655 /* ChatGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				96D0E8AB29DC7B4000AAB655 /* ChatView.swift */,
+				664C2FA329E3DF2A008FA9C1 /* ChatList.swift */,
 				96D0E8AF29DC7B6400AAB655 /* ChatSettingView.swift */,
 				66D11AF829E3013D00FDB9A2 /* ChatCell.swift */,
 				66D11AFA29E302A500FDB9A2 /* ChatInputView.swift */,
@@ -254,6 +257,7 @@
 				96D0E8B029DC7B6400AAB655 /* ChatSettingView.swift in Sources */,
 				66D11AF929E3013D00FDB9A2 /* ChatCell.swift in Sources */,
 				96D0E87E29DB184500AAB655 /* ChatGPTApp.swift in Sources */,
+				664C2FA429E3DF2A008FA9C1 /* ChatList.swift in Sources */,
 				96D0E8AE29DC7B4600AAB655 /* ChatModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

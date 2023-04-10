@@ -11,13 +11,19 @@ import Alamofire
 struct ChatView: View {
     
     @State var contentText : String = ""
-    @State var contentArray : Array<ChatRowModel> = []
     @State var isShow : Bool = false
+    @State var contentArray : Array<ChatRowModel> = {
+        if var chats = ChatRowModel.getObjetcs(){
+            return chats
+        }
+        return []
+    }()
+    
     @State var key: String = {
         let model = APIKeyModel.getCurrentKey()
         return model!.key
     }()
-    
+
     
     var body: some View {
         VStack{
@@ -26,7 +32,7 @@ struct ChatView: View {
             ChatInputView(contentText: $contentText) { keyword in
                 requestData(keyword: keyword)
             }
-        }
+        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
     
     func toolView() -> some View {
@@ -54,64 +60,29 @@ struct ChatView: View {
         List{
             ForEach(0..<$contentArray.count,id: \.self) { index in
                 let row = contentArray[index]
-                ChatCell(content: row.content,icon: row.icon)
+                ChatCell(content: row.content,icon: row.icon,timestamp: row.timeDesc).onTapGesture {
+                    print("点击\(index)")
+                }
             }
         }
+        .listStyle(.plain)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
     
     
     func requestData(keyword : String)  {
         print("请求\(keyword)")
-        openai(keyword)
-        let user = ChatRowModel(content: keyword, icon: "head", role: "我")
+        
+        let user = ChatModel.createChatRow(content: keyword, role: .user("我"))
         contentArray.append(user)
+        ChatRowModel.insertRecord(user)
         contentText = ""
-    }
-    
-    func openai(_ keyword : String?)  {
-        guard keyword != nil else{
-            return
-        }
-        let headers : HTTPHeaders = [
-            "Authorization" : "Bearer \(self.key)",
-            "Content-Type": "application/json"
-        ]
-        let params : [String : Any] = [
-            "model" : "gpt-3.5-turbo",
-            "messages" : [
-                ["role" : "user","content" : keyword]
-            ]
-        ]
-        print("headers: \(headers)\n body : \(params)")
-        AF.request("https://api.openai.com/v1/chat/completions",
-                   method: .post,
-                   parameters: params,
-                   encoding: JSONEncoding.default,
-                   headers: headers
-        ){request in
-            request.timeoutInterval = 30.0;
-        }.responseData { response in
-            print(response)
-            switch response.result{
-            case .success(let data):
-                do{
-                    let model = try JSONDecoder().decode(ChatModel.self, from: data)
-                    if let conetnt = model.choices.first?.message.content{
-                        let chatgpt = ChatRowModel(content: conetnt, icon: "Chatgpt", role: "OpenAI")
-                        contentArray.append(chatgpt)
-                    }
-                }catch{
-                    debugPrint("请求失败\(error)")
-                    let chatgpt = ChatRowModel(content: error.localizedDescription, icon: "Chatgpt", role: "OpenAI")
-                    contentArray.append(chatgpt)
-                }
-            case .failure(let error):
-                debugPrint("请求失败\(error)")
-                let chatgpt = ChatRowModel(content: error.localizedDescription, icon: "Chatgpt", role: "OpenAI")
-                contentArray.append(chatgpt)
-            }
+        
+        ChatModel.openai(keyword, key) {
+            contentArray.append($0)
         }
     }
+ 
 }
 
 struct ChatView_Previews: PreviewProvider {

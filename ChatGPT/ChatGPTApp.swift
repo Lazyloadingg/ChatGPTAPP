@@ -22,5 +22,7 @@ struct ChatGPTApp: App {
     
     func setting()  {
         DBManager.shared().createTable(table: "key_tb", type: APIKeyModel.self)
+        DBManager.shared().createTable(table: "record_tb", type: ChatRowModel.self)
+        
     }
 }
